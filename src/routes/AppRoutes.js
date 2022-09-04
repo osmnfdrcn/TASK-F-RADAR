@@ -24,7 +24,7 @@ const AppRoutes = () => {
           }
         >
           <Route index element={<HomePage />} />
-          <Route path='customer/:id' element={<CustomerDetailsPage />} />
+          <Route path='customers/:id' element={<CustomerDetailsPage />} />
         </Route>
         <Route path='login' element={<LoginPage />} />
         <Route path='*' element={<ErrorPage />} />
