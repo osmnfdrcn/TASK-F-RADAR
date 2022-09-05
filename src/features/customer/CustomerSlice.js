@@ -18,7 +18,19 @@ const initialState = {
   currentPage: 1,
   start: 0,
   skip: 15,
-  end: 15
+  end: 15,
+
+  // true => ascending sort
+  // false => descending sort
+  // default is false so that first sorting can be ascending.
+  sortStatus: {
+    companyName: false,
+    taxNumber: false,
+    taxOffice: false,
+    invoiceCount: false,
+    contactNumber: false,
+    province: false
+  }
 }
 
 export const getCustomers = createAsyncThunk(
@@ -49,6 +61,47 @@ const customerSlice = createSlice({
       const searchString = payload + ""
       state.searchResults = state.customers.filter((customer) => (customer.companyName + String(customer.taxNumber)).toLowerCase().includes(searchString.toLowerCase()))
       state.total_pages = Math.ceil(state.searchResults.length / state.recordsPerPage)
+    },
+
+    // taxNumber and invoiceCount must be sorting as number and others as string
+    sortCustomers: (state, { payload }) => {
+      const isNumber = payload === "taxNumber" || payload === "invoiceCount"
+
+      if (state.sortStatus[`${payload}`] === false) {
+        state.searchResults = state.searchResults.sort((a, b) => {
+          if (isNumber
+            ? Number(a[`${payload}`]) < Number(b[`${payload}`])
+            : String(a[`${payload}`]) < String(b[`${payload}`])
+          ) {
+            return -1;
+          }
+          if (isNumber
+            ? Number(a[`${payload}`]) > Number(b[`${payload}`])
+            : String(a[`${payload}`]) > String(b[`${payload}`])
+          ) {
+            return 1;
+          }
+          return 0;
+        })
+        state.sortStatus[`${payload}`] = true
+      } else {
+        state.searchResults = state.searchResults.sort((a, b) => {
+          if (isNumber
+            ? Number(a[`${payload}`]) > Number(b[`${payload}`])
+            : String(a[`${payload}`]) > String(b[`${payload}`])
+          ) {
+            return -1;
+          }
+          if (isNumber
+            ? Number(a[`${payload}`]) < Number(b[`${payload}`])
+            : String(a[`${payload}`]) < String(b[`${payload}`])
+          ) {
+            return 1;
+          }
+          return 0;
+        })
+        state.sortStatus[`${payload}`] = false
+      }
     },
 
 
@@ -99,6 +152,6 @@ const customerSlice = createSlice({
 
 
 })
-export const { updateSearchString, updatePage } = customerSlice.actions
+export const { updateSearchString, updatePage, sortCustomers } = customerSlice.actions
 export default customerSlice.reducer
 
