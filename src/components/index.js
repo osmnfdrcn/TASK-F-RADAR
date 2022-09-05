@@ -4,6 +4,7 @@ import TableHeader from "./TableHeader/TableHeader";
 import Title from "./Title/Title";
 import FormRow from "./FormRow/FormRow";
 import Search from './Search/Search'
+import Spinner from './Spinner/Spinner'
 
 export {
   Customer,
@@ -12,4 +13,5 @@ export {
   Title,
   FormRow,
   Search,
+  Spinner
 }
