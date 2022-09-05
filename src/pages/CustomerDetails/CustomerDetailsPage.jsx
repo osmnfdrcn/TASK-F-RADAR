@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { getSingleCustomer } from "../../features/customer/CustomerSlice";
 import { Link } from "react-router-dom";
-import { Customer } from "../../components";
 
 const CustomerDetailsPage = () => {
 	const { id } = useParams();
@@ -14,7 +13,7 @@ const CustomerDetailsPage = () => {
 	useEffect(() => {
 		dispatch(getSingleCustomer(id));
 	}, []);
-	return <Customer key={uuidv4()} customer={customer} />;
+	return <div>{customer.companyName}</div>;
 };
 
 export default CustomerDetailsPage;

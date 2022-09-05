@@ -17,3 +17,12 @@ export const getSingleCustomerThunk = async (url, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.response.data.msg)
   }
 }
+
+export const deleteCustomerThunk = async (url, thunkAPI) => {
+  try {
+    const resp = await customFetch.delete(url)
+    return resp.data
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.response.data.msg)
+  }
+}
