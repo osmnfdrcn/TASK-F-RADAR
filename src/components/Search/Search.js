@@ -14,6 +14,9 @@ const Search = () => {
       type="text"
       name="search"
       onChange={handleChange}
+      placeholder="Search"
+      className="search-input"
+      labelText=""
     />
   )
 }

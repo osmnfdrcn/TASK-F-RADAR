@@ -26,3 +26,21 @@ export const deleteCustomerThunk = async (url, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.response.data.msg)
   }
 }
+
+export const createCustomerThunk = async (url, data, thunkAPI) => {
+  try {
+    const resp = await customFetch.post(url, data)
+    return resp.data
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.response.data.msg)
+  }
+}
+
+export const updateCustomerThunk = async (url, data, thunkAPI) => {
+  try {
+    const resp = await customFetch.put(url, data)
+    return resp.data
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.response.data.msg)
+  }
+}

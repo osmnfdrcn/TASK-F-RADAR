@@ -16,21 +16,25 @@ const Wrapper = styled.div`
 	}
 
 /* Zebra striping */
+
 tr:nth-of-type(odd) { 
 	background: #eee; 
-	}
-
+}
+	tr:hover{
+	background-color: var(--primary-300);
+	color: white;
+}
 th { 
-	background: #3498db; 
+	background: var(--primary-800); 
 	color: white; 
-	font-weight: bold; 
+	letter-spacing: 2px;
 	}
 
 td, th { 
 	padding: 10px; 
 	border: 1px solid #ccc; 
 	text-align: left; 
-	font-size: 18px;
+	font-size: 15px;
 	}
 
 /* 

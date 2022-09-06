@@ -5,7 +5,7 @@ const Wrapper = styled.div`
   font-size: 22px;
   color: var(--grey-800);
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding: 0 30px;
   letter-spacing: 5px;

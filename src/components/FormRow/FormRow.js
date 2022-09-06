@@ -1,6 +1,7 @@
-const FormRow = ({ type, name, value, onChange, labelText }) => {
+const FormRow = ({ type, name, value, onChange, onBlur, labelText, placeholder, className, readOnly }) => {
+    const isEditing = true
     return (
-        <div className='form-row'>
+        <div className={`form-row ${className}`}>
             <label htmlFor={name} className='form-label'>
                 {labelText || name}
             </label>
@@ -9,6 +10,10 @@ const FormRow = ({ type, name, value, onChange, labelText }) => {
                 value={value}
                 name={name}
                 onChange={onChange}
+                onBlur={onBlur}
+                className='form-input '
+                placeholder={placeholder}
+            // readOnly={true}
             />
         </div>
     )

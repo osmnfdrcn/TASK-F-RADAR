@@ -3,7 +3,9 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import {
   getCustomersThunk,
   getSingleCustomerThunk,
-  deleteCustomerThunk
+  deleteCustomerThunk,
+  createCustomerThunk,
+  updateCustomerThunk
 
 } from './CustomerThunk'
 
@@ -19,6 +21,8 @@ const initialState = {
   start: 0,
   skip: 15,
   end: 15,
+  displaySuccessAlert: false,
+  displayErrorAlert: false,
 
   // true => ascending sort
   // false => descending sort
@@ -35,7 +39,7 @@ const initialState = {
 
 export const getCustomers = createAsyncThunk(
   'customer/getCustomers',
-  async (url, thunkAPI) => {
+  async (thunkAPI) => {
     return getCustomersThunk("/customers", thunkAPI)
   }
 )
@@ -50,6 +54,20 @@ export const deleteCustomer = createAsyncThunk(
   'customer/deleteCustomer',
   async (id, thunkAPI) => {
     return deleteCustomerThunk(`/customers/${id}`, thunkAPI)
+  }
+)
+
+export const createCustomer = createAsyncThunk(
+  'customer/createCustomer',
+  async (data, thunkAPI) => {
+    return createCustomerThunk(`/customers/`, data, thunkAPI)
+  }
+)
+
+export const updateCustomer = createAsyncThunk(
+  'customer/updateCustomer',
+  async (data, thunkAPI) => {
+    return updateCustomerThunk(`/customers/`, data, thunkAPI)
   }
 )
 
@@ -103,6 +121,9 @@ const customerSlice = createSlice({
         state.sortStatus[`${payload}`] = false
       }
     },
+    resetCustomer: (state, { payload }) => {
+      state.customer = {}
+    },
 
 
   },
@@ -119,7 +140,6 @@ const customerSlice = createSlice({
 
     },
     [getCustomers.rejected]: (state, { payload }) => {
-      console.log(payload);
       state.isLoading = false
       state.error = payload
     },
@@ -140,11 +160,44 @@ const customerSlice = createSlice({
       state.isLoading = true
     },
     [deleteCustomer.fulfilled]: (state, { payload }) => {
-      state.customer = payload
+      state.customers = state.customers.filter((c) => c.id !== payload.id)
+      state.searchResults = state.customers
+      state.customer = {}
       state.isLoading = false
       state.error = false
+      state.showSuccessAlert = true
     },
     [deleteCustomer.rejected]: (state, { payload }) => {
+      state.isLoading = false
+      state.error = true
+    },
+    [createCustomer.pending]: (state) => {
+      state.isLoading = true
+    },
+    [createCustomer.fulfilled]: (state, { payload }) => {
+      state.customers = [...state.customers, payload]
+      state.searchResults = [...state.customers, payload]
+      state.isLoading = false
+      state.error = false
+      state.displaySuccessAlert = false
+    },
+    [createCustomer.rejected]: (state, { payload }) => {
+      console.log(payload);
+      state.isLoading = false
+      state.error = true
+    },
+    [updateCustomer.pending]: (state) => {
+      state.isLoading = true
+    },
+    [updateCustomer.fulfilled]: (state, { payload }) => {
+      state.customers = payload
+      state.searchResults = payload
+      state.isLoading = false
+      state.error = false
+      state.displaySuccessAlert = false
+    },
+    [updateCustomer.rejected]: (state, { payload }) => {
+      console.log(payload);
       state.isLoading = false
       state.error = true
     },
@@ -152,6 +205,6 @@ const customerSlice = createSlice({
 
 
 })
-export const { updateSearchString, updatePage, sortCustomers } = customerSlice.actions
+export const { updateSearchString, updatePage, sortCustomers, resetCustomer } = customerSlice.actions
 export default customerSlice.reducer
 

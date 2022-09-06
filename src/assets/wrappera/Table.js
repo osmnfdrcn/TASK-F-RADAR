@@ -6,24 +6,11 @@ const Wrapper = styled.div`
 	border-collapse: collapse; 
 	margin:50px auto;
 	}
+	/* Zebra striping */
 
-/* Zebra striping */
-tr:nth-of-type(odd) { 
-	background: #eee; 
-	}
 
-th { 
-	background: #3498db; 
-	color: white; 
-	font-weight: bold; 
-	}
 
-td, th { 
-	padding: 10px; 
-	border: 1px solid #ccc; 
-	text-align: left; 
-	font-size: 18px;
-	}
+
 
 /* 
 Max width before this PARTICULAR table gets nasty
@@ -50,7 +37,10 @@ only screen and (max-width: 760px),
 		left: -9999px;
 	}
 	
-	tr { border: 1px solid #ccc; }
+	tr { 
+		border: 1px solid #ccc; 
+		
+	}
 	
 	td { 
 		/* Behave  like a "row" */
@@ -73,7 +63,6 @@ only screen and (max-width: 760px),
 		content: attr(data-column);
 
 		color: #000;
-		font-weight: bold;
 	}
 
 }
