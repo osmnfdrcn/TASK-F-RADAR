@@ -23,6 +23,9 @@ const initialState = {
   end: 15,
   displaySuccessAlert: false,
   displayErrorAlert: false,
+  displayDeleteConfirmModal: false,
+  displayCreateCustomerModal: false,
+  displayUpdateCustomerModal: false,
 
   // true => ascending sort
   // false => descending sort
@@ -59,15 +62,15 @@ export const deleteCustomer = createAsyncThunk(
 
 export const createCustomer = createAsyncThunk(
   'customer/createCustomer',
-  async (data, thunkAPI) => {
-    return createCustomerThunk(`/customers/`, data, thunkAPI)
+  async (customerData, thunkAPI) => {
+    return createCustomerThunk('/customers', customerData, thunkAPI)
   }
 )
 
 export const updateCustomer = createAsyncThunk(
   'customer/updateCustomer',
-  async (data, thunkAPI) => {
-    return updateCustomerThunk(`/customers/`, data, thunkAPI)
+  async (customerData, thunkAPI) => {
+    return updateCustomerThunk(`/customers/${customerData.id}`, customerData, thunkAPI)
   }
 )
 
@@ -120,9 +123,19 @@ const customerSlice = createSlice({
         })
         state.sortStatus[`${payload}`] = false
       }
+
     },
     resetCustomer: (state, { payload }) => {
       state.customer = {}
+    },
+    showDeleteConfirmModal: (state, { payload }) => {
+      state.displayDeleteConfirmModal = payload
+    },
+    showCreateCustomerModal: (state, { payload }) => {
+      state.displayCreateCustomerModal = payload
+    },
+    showUpdateCustomerModal: (state, { payload }) => {
+      state.displayUpdateCustomerModal = payload
     },
 
 
@@ -179,7 +192,8 @@ const customerSlice = createSlice({
       state.searchResults = [...state.customers, payload]
       state.isLoading = false
       state.error = false
-      state.displaySuccessAlert = false
+      state.displaySuccessAlert = true
+      state.displayCreateCustomerModal = false
     },
     [createCustomer.rejected]: (state, { payload }) => {
       console.log(payload);
@@ -190,21 +204,21 @@ const customerSlice = createSlice({
       state.isLoading = true
     },
     [updateCustomer.fulfilled]: (state, { payload }) => {
-      state.customers = payload
-      state.searchResults = payload
+      state.customer = payload
       state.isLoading = false
       state.error = false
-      state.displaySuccessAlert = false
+      state.displaySuccessAlert = true
+      state.displayUpdateCustomerModal = false
     },
     [updateCustomer.rejected]: (state, { payload }) => {
-      console.log(payload);
       state.isLoading = false
-      state.error = true
-    },
+      state.error = payload
+
+    }
   }
 
 
 })
-export const { updateSearchString, updatePage, sortCustomers, resetCustomer } = customerSlice.actions
+export const { updateSearchString, updatePage, sortCustomers, resetCustomer, showDeleteConfirmModal, showCreateCustomerModal, showUpdateCustomerModal } = customerSlice.actions
 export default customerSlice.reducer
 

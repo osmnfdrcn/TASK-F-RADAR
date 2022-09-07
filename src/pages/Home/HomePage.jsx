@@ -1,6 +1,6 @@
 import Wrapper from "../../assets/wrappera/Home";
 import { useSelector, useDispatch } from "react-redux";
-import { showCreateCustomerModal } from "../../features/app/AppSlice";
+import { showCreateCustomerModal } from "../../features/customer/CustomerSlice";
 
 import {
 	Table,
@@ -11,14 +11,13 @@ import {
 	Button,
 	CustomerCreateModal,
 } from "../../components";
+
 import { tableHeaderTitles } from "../../utils/constants";
 
 const HomePage = () => {
 	const dispatch = useDispatch();
-	const { displaySuccessAlert, displayErrorAlert } = useSelector(
-		(store) => store.customer
-	);
-	const { displayCreateCustomerModal } = useSelector((store) => store.app);
+	const { displaySuccessAlert, displayErrorAlert, displayCreateCustomerModal } =
+		useSelector((store) => store.customer);
 
 	return (
 		<Wrapper>

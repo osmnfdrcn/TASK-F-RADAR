@@ -1,32 +1,31 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { updateCustomer } from '../features/customer/CustomerSlice';
-import { showUpdateCustomerModal } from '../features/app/AppSlice'
-import SchemaCustomer from '../utils/formSchemas/SchemaCustomer'
+import { updateCustomer, showUpdateCustomerModal } from '../../features/customer/CustomerSlice';
+import SchemaCustomer from '../../utils/formSchemas/SchemaCustomer'
 import { useFormik } from "formik";
-import { FormRow, Title, Spinner, Button } from '../components'
-import Wrapper from '../assets/wrappera/CustomerActionModal';
+import { FormRow, Title, Spinner, Button } from '../../components'
+import Wrapper from '../../assets/wrappera/CustomerActionModal';
 import { AiOutlineCloseCircle } from 'react-icons/ai'
+import { useNavigate } from 'react-router-dom';
 
 const CustomerUpdateModal = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const { customer, isLoading } = useSelector((store) => store.customer);
-  const { companyName, taxNumber, taxOffice, invoiceCount, contactNumber, province } = customer
 
   const formik = useFormik({
     initialValues: {
-      companyName,
-      taxNumber,
-      taxOffice,
-      invoiceCount,
-      contactNumber,
-      province,
+      id: customer.id,
+      companyName: customer.companyName,
+      taxNumber: customer.taxNumber,
+      taxOffice: customer.taxOffice,
+      invoiceCount: customer.invoiceCount,
+      contactNumber: customer.contactNumber,
+      province: customer.province,
 
     },
 
     validationSchema: SchemaCustomer,
     onSubmit: () => {
-      const { companyName, taxNumber, taxOffice, invoiceCount, contactNumber } = formik.values;
-
       dispatch(updateCustomer(formik.values));
     }
   })
@@ -123,7 +122,7 @@ const CustomerUpdateModal = () => {
         </div>
 
         <div className="buttons">
-          <Button className="btn btn-block" type="submit" text="CREATE" disabled={isLoading || !(formik.isValid && formik.dirty)} />
+          <Button className="btn btn-block" type="submit" text="UPDATE" disabled={isLoading || !(formik.isValid && formik.dirty)} />
         </div>
       </form>
     </Wrapper>

@@ -27,20 +27,22 @@ export const deleteCustomerThunk = async (url, thunkAPI) => {
   }
 }
 
-export const createCustomerThunk = async (url, data, thunkAPI) => {
+export const createCustomerThunk = async (url, customerData, thunkAPI) => {
   try {
-    const resp = await customFetch.post(url, data)
+    console.log(customerData);
+    const resp = await customFetch.post(url, customerData)
+    return resp.data
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.response.data.msg)
+  }
+}
+export const updateCustomerThunk = async (url, customerData, thunkAPI) => {
+  try {
+    console.log(customerData);
+    const resp = await customFetch.put(url, customerData)
     return resp.data
   } catch (error) {
     return thunkAPI.rejectWithValue(error.response.data.msg)
   }
 }
 
-export const updateCustomerThunk = async (url, data, thunkAPI) => {
-  try {
-    const resp = await customFetch.put(url, data)
-    return resp.data
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data.msg)
-  }
-}

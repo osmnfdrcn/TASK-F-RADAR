@@ -7,12 +7,11 @@ const Wrapper = styled.div`
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-		position: relative;
 
-      table { 
-	width: 1250px; 
-	border-collapse: collapse; 
-	margin:50px auto;
+  table { 
+		width: 1250px; 
+		border-collapse: collapse; 
+		margin:50px auto;
 	}
 
 /* Zebra striping */
@@ -37,11 +36,7 @@ td, th {
 	font-size: 15px;
 	}
 
-/* 
-Max width before this PARTICULAR table gets nasty
-This query will take effect for any screen smaller than 760px
-and also iPads specifically.
-*/
+
 @media 
 only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {

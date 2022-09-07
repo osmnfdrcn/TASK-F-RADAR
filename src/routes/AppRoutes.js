@@ -6,7 +6,7 @@ import {
   LoginPage,
   ProtectedRoute,
   SharedLayout,
-  ErrorPage
+  ErrorPage,
 } from '../pages'
 
 

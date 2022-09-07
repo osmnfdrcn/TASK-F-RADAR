@@ -12,5 +12,5 @@ export {
   LoginPage,
   ErrorPage,
   ProtectedRoute,
-  SharedLayout
+  SharedLayout,
 }

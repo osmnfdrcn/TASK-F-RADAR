@@ -10,7 +10,7 @@ import Navbar from "./Navbar/Navbar";
 import ConfirmModal from "./ConfirmModal/ConfirmModal";
 import Table from "./Table/Table";
 import CustomerCreateModal from "./CustomerCreateModal/CustomerCreateModal";
-import CustomerUpdateModal from "../CustomerUpdateModal/CustomerUpdateModal";
+import CustomerUpdateModal from "./CustomerUpdateModal/CustomerUpdateModal";
 export {
   Customer,
   Button,

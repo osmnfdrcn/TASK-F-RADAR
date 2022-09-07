@@ -5,12 +5,10 @@ import { v4 as uuidv4 } from "uuid";
 import {
 	getSingleCustomer,
 	deleteCustomer,
-	updateCustomer,
-} from "../../features/customer/CustomerSlice";
-import {
-	showConfirmModal,
+	showDeleteConfirmModal,
 	showUpdateCustomerModal,
-} from "../../features/app/AppSlice";
+} from "../../features/customer/CustomerSlice";
+
 import {
 	Spinner,
 	Title,
@@ -24,10 +22,12 @@ const CustomerDetailsPage = () => {
 	const { id } = useParams();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const { customer, isLoading } = useSelector((store) => store.customer);
-	const { displayConfirmModal, displayUpdateCustomerModal } = useSelector(
-		(store) => store.app
-	);
+	const {
+		customer,
+		isLoading,
+		displayDeleteConfirmModal,
+		displayUpdateCustomerModal,
+	} = useSelector((store) => store.customer);
 
 	useEffect(() => {
 		dispatch(getSingleCustomer(id));
@@ -39,13 +39,13 @@ const CustomerDetailsPage = () => {
 
 	const handleDelete = (id) => {
 		dispatch(deleteCustomer(id));
-		dispatch(showConfirmModal(false));
+		dispatch(showDeleteConfirmModal(false));
 		navigate("/");
 	};
 
 	return (
 		<Wrapper>
-			{displayConfirmModal && (
+			{displayDeleteConfirmModal && (
 				<ConfirmModal
 					action="You are about to delete a record!"
 					question="Are you sure?"
@@ -95,7 +95,7 @@ const CustomerDetailsPage = () => {
 					<Button
 						className="btn btn-block"
 						type="submit"
-						onClick={() => dispatch(showConfirmModal(true))}
+						onClick={() => dispatch(showDeleteConfirmModal(true))}
 						text="DELETE"
 					/>
 				</div>

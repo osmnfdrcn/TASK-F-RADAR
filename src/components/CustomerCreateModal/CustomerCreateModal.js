@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { createCustomer } from '../../features/customer/CustomerSlice';
-import { showCreateCustomerModal } from '../../features/app/AppSlice'
+import { createCustomer, showCreateCustomerModal } from '../../features/customer/CustomerSlice';
 import SchemaCustomer from '../../utils/formSchemas/SchemaCustomer'
 import { useFormik } from "formik";
 import { FormRow, Title, Spinner, Button } from '..'
@@ -27,6 +26,7 @@ const CustomerCreateModal = () => {
       const { companyName, taxNumber, taxOffice, invoiceCount, contactNumber } = formik.values;
 
       dispatch(createCustomer(formik.values));
+
     }
   })
 
