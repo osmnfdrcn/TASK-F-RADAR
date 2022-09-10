@@ -22,6 +22,9 @@ const CustomerDetailsPage = () => {
 	const { id } = useParams();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const { user } = useSelector((store) => store.user);
+	const userVerified = user?.status === "Active";
+
 	const {
 		customer,
 		isLoading,
@@ -91,12 +94,14 @@ const CustomerDetailsPage = () => {
 						type="submit"
 						onClick={() => dispatch(showUpdateCustomerModal(true))}
 						text="EDIT"
+						disabled={!userVerified}
 					/>
 					<Button
 						className="btn btn-block"
 						type="submit"
 						onClick={() => dispatch(showDeleteConfirmModal(true))}
 						text="DELETE"
+						disabled={!userVerified}
 					/>
 				</div>
 			</div>

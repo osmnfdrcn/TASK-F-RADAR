@@ -18,6 +18,8 @@ const HomePage = () => {
 	const dispatch = useDispatch();
 	const { displaySuccessAlert, displayErrorAlert, displayCreateCustomerModal } =
 		useSelector((store) => store.customer);
+	const { user } = useSelector((store) => store.user);
+	const userVerified = user?.status === "Active";
 
 	return (
 		<Wrapper>
@@ -29,6 +31,7 @@ const HomePage = () => {
 				className="btn"
 				text={"Create Customer"}
 				onClick={() => dispatch(showCreateCustomerModal(true))}
+				disabled={!userVerified}
 			/>
 			<Table>
 				<TableHeader titles={tableHeaderTitles} />

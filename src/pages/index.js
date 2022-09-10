@@ -4,6 +4,7 @@ import LoginPage from "./Login/LoginPage";
 import ErrorPage from "./Error/ErrorPage";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 import SharedLayout from "./SharedLayout/SharedLayout";
+import VerifyUser from "./VerifyUser/VerifyUser";
 
 
 export {
@@ -13,4 +14,5 @@ export {
   ErrorPage,
   ProtectedRoute,
   SharedLayout,
+  VerifyUser
 }

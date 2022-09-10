@@ -1,4 +1,5 @@
 export const baseURL = "https://6215eeb77428a1d2a354c664.mockapi.io/api/v1"
+export const authApiUrl = "http://localhost:5000/api/v1"
 
 export const tableHeaderTitles = [
   { id: 0, title: "Company Name", objKey: "companyName" },

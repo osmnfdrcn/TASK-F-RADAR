@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const Wrapper = styled.div`
     width: 100%;
-    margin: 20px auto;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: space-around;

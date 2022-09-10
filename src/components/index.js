@@ -11,6 +11,12 @@ import ConfirmModal from "./ConfirmModal/ConfirmModal";
 import Table from "./Table/Table";
 import CustomerCreateModal from "./CustomerCreateModal/CustomerCreateModal";
 import CustomerUpdateModal from "./CustomerUpdateModal/CustomerUpdateModal";
+import Login from "./Login/Login";
+import Warning from "./Warning/Warning";
+import Logo from './Logo/Logo'
+import MainHeaderItem from "./MainHeaderItem/MainHeaderItem";
+import SubMenu from './SubMenu/SubMenu'
+
 export {
   Customer,
   Button,
@@ -24,5 +30,10 @@ export {
   ConfirmModal,
   Table,
   CustomerCreateModal,
-  CustomerUpdateModal
+  CustomerUpdateModal,
+  Login,
+  Warning,
+  MainHeaderItem,
+  Logo,
+  SubMenu,
 }

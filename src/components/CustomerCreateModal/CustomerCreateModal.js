@@ -9,6 +9,8 @@ import { AiOutlineCloseCircle } from 'react-icons/ai'
 const CustomerCreateModal = () => {
   const dispatch = useDispatch();
   const { isLoading } = useSelector((store) => store.customer);
+  const { user } = useSelector((store) => store.user);
+  const userVerified = user?.status === "Active";
 
   const formik = useFormik({
     initialValues: {
@@ -122,7 +124,7 @@ const CustomerCreateModal = () => {
         </div>
 
         <div className="buttons">
-          <Button className="btn btn-block" type="submit" text="CREATE" disabled={isLoading || !(formik.isValid && formik.dirty)} />
+          <Button className="btn btn-block" type="submit" text="CREATE" disabled={!userVerified || isLoading || !(formik.isValid && formik.dirty)} />
         </div>
       </form>
     </Wrapper>

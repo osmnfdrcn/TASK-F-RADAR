@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 0 30px;
+  padding: 60px;
   letter-spacing: 5px;
   p{
     display: inline-block;
