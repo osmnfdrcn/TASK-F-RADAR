@@ -1,10 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectTranslations } from "../../features/i18n/i18nSlice";
 import useTranslations from "../../features/i18n/useTranslation";
-
-import { v4 as uuidv4 } from "uuid";
 import {
 	getSingleCustomer,
 	deleteCustomer,

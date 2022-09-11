@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify'
-import axios from 'axios'
 import {
   addUserToLocalStorage,
   getUserFromLocalStorage,
@@ -20,6 +19,7 @@ const initialState = {
   isLoading: false,
   user: getUserFromLocalStorage(),
   token: getTokenFromLocalStorage(),
+  isVerified: false
 }
 
 export const registerUser = createAsyncThunk(
@@ -87,6 +87,7 @@ const userSlice = createSlice({
       const { user, token } = payload
       state.user = user
       state.token = token
+      state.isVerified = true
       addUserToLocalStorage(user, token)
       state.isLoading = false
       toast.success('Account Activated')

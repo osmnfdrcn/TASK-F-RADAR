@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { getTokenFromLocalStorage } from './localStorage';
-const baseURL = 'http://localhost:5000/api/v1'
+import { authApiUrl } from './constants';
+
 const customAuthFetch = axios.create({
-  baseURL
+  baseURL: authApiUrl
 });
 
 customAuthFetch.interceptors.request.use((config) => {

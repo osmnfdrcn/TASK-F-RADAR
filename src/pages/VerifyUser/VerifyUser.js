@@ -3,13 +3,13 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { verifyUser } from '../../features/user/userSlice';
 import Wrapper from '../../assets/wrappera/VerifyUser';
-
+import { Spinner } from '../../components';
 
 const VerifyUser = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch();
   const { verificationCode } = useParams()
-  const { vCode, isLoading } = useSelector((store) => store.user);
+  const { isVerified, isLoading } = useSelector((store) => store.user);
   useState(() => {
     dispatch(verifyUser(verificationCode))
     setTimeout(() => {
@@ -17,11 +17,11 @@ const VerifyUser = () => {
     }, 3000)
   }, []);
 
-
+  if (isLoading) { return <Spinner /> }
   return (
     <Wrapper >
       <p>{
-        vCode === verificationCode ? "Account Activated" : "404"
+        isVerified && verificationCode ? "Account Activated" : "404"
       }</p>
     </Wrapper>
   )

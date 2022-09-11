@@ -9,9 +9,8 @@ import useTranslations from '../../features/i18n/useTranslation';
 
 const UserInfo = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { t } = useTranslations();
-  const { user, isLoading } = useSelector((store) => store.user);
+  const { user } = useSelector((store) => store.user);
   const userVerified = user.status === 'Active'
 
 

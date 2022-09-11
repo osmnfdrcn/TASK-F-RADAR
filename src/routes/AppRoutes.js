@@ -10,7 +10,6 @@ import {
   LoginPage,
   ProtectedRoute,
   SharedLayout,
-  ErrorPage,
   VerifyUser
 } from '../pages'
 
@@ -44,7 +43,7 @@ const AppRoutes = () => {
         </Route>
         <Route path='user/:verificationCode' element={<VerifyUser />} />
         <Route path='login' element={<LoginPage />} />
-        <Route path='*' element={<ErrorPage />} />
+        <Route path='*' element={<HomePage />} />
       </Routes>
 
       {

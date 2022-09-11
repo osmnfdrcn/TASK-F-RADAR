@@ -1,4 +1,4 @@
-import customAuthFetch from '../../utils/axios'
+import customAuthFetch from '../../utils/customAuthFetch'
 
 export const registerUserThunk = async (url, user, thunkAPI) => {
   try {

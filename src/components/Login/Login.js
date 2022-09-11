@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from "formik";
 import useTranslations from "../../features/i18n/useTranslation";
 import { loginUser, registerUser } from '../../features/user/userSlice';
-import { FormRow } from "../";
+import { FormRow, Spinner } from "../";
 import Wrapper from "../../assets/wrappera/Login";
 import { SchemaRegister, SchemaLogin } from "../../utils/formSchemas";
+
 
 
 const Login = () => {
@@ -46,7 +47,7 @@ const Login = () => {
     // eslint-disable-next-line 
   }, [user]);
 
-
+  if (isLoading) { return <Spinner /> }
   return (
     <Wrapper>
       <div className="register-container">
