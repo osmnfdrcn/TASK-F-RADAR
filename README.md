@@ -23,7 +23,7 @@ Fon Radar API ve asagida bulunan Auth API bilglerinin .env dosyasina eklenmesi g
 Kullanicilar login olmadiklari takdirde uygulamanin diger kisimlarina ersemeyeceklerdir. Eger daha once bir hesap olusturlmadiysa oncelikle kullanici kayit olmali ve kayit sonrasi belirtlen email adresine gonderilen link araciligi ile email adresini dogrulamalidir.
 Email adresini dogrulanmadigi zaman zarfinda, uygulamaya giris yapilabilecek fakat musteri bilglerinin listelenmesi dsinda musteri olusturmak, degistirme, silme, kullanici profili guncelleme ya da password degisikligigibi herhangi bir fonksiyon kullanilabilir durumda olmayacak, sayfanin sag alt bolumunde email adresinin dogrulanmadigina dair bir uyari gosterilecektir. 
 
-## Fonksiyanalite
+## Fonksiyonalite
 
 Ana sayfada musteri datalarinin listelenmesi, yeni musteri olusturulmasi ve musterilen arasinda arama yapilmasi islevleri yer alir. Musteri listesinin goruntulendigi tablonun basliklarina tiklanarak artan veya azalan sekilde siralama yapilailir. Varsayilan olarak ilk siralama artan olarak yapilmaktadir.
 Yeni musteri olusturma butonuna tiklanmasi durumunda bir modal acilacak, girilen verilere uygun olarak yeni musteri eklenecektir.
