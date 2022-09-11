@@ -17,9 +17,10 @@ const Wrapper = styled.header`
 
   .header-items{
     display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 100%;
   }
   .header-item{
     display: none;

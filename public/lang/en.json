@@ -30,5 +30,17 @@
 	"save": "Save",
 	"login": "Login",
 	"register": "Register",
-	"passwordRepeat": "Repeat Password"
+	"passwordRepeat": "Repeat Password",
+	"errorMessageCompanyName": "Please enter Company Name!",
+	"errorMessageTaxNumber": "Must be number and exactly 10 characters!",
+	"errorMessageTaxOffice": "Please enter Tax Office!",
+	"errorMessageInvoiceCount": "Please enter Invoice Count!",
+	"errorMessageContactNumber": "Please enter Contact Number!",
+	"errorMessageProvince": "Please enter Province!",
+	"errorMessageFirstName": "Please enter your first name!",
+	"errorMessageLastName": "Please enter your last name!",
+	"errorMessageEmail": "Please enter email!",
+	"errorMessagePassword": "Password must contain 1 uppercase, 1 lowercase letters, 1 number ve 1 special character and be at least 8 digit long!",
+	"errorMessageConfirmPassword": "Passwords must match!",
+	"errorMessageLoginPassword": "Please enter your password!"
 }

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 const Wrapper = styled.div`
-    position: absolute;
-    z-index: 1000;
+    position: fixed;
+    z-index: 1003;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,9 +9,11 @@ const Wrapper = styled.div`
     bottom: 0;
     right: 0;
     left: 0;
-    padding-top: 20px ;
+    padding: 5px 0;
     width: 100%;
     margin-top: 20px;
+    border-top: 1px solid var(--grey-100);
+    background-color: white;
     button{
       border: transparent;
       background-color: transparent;

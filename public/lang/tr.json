@@ -30,5 +30,17 @@
 	"save": "Kaydet",
 	"login": "Giris",
 	"register": "Kaydol",
-	"passwordRepeat": "Parola Tekrar"
+	"passwordRepeat": "Parola Tekrar",
+	"errorMessageCompanyName": "Lutfen bir firma adi giriniz!",
+	"errorMessageTaxNumber": "10 rakamdan olusmali!",
+	"errorMessageTaxOffice": "Lutfen vergi dairesini giriniz!",
+	"errorMessageInvoiceCount": "Lutfen fatura sayisini giriniz!",
+	"errorMessageContactNumber": "Lutfen iletisim numaranizi giriniz!",
+	"errorMessageProvince": "Lutfen bir sehir belirtiniz!",
+	"errorMessageFirstName": "Lutfen adinizi giriniz!",
+	"errorMessageLastName": "Lutfen soydinizi giriniz!",
+	"errorMessageEmail": "Lutfen email adresinizi giriniz!",
+	"errorMessagePassword": " Parola 1 buyuk, 1 kucuk harf, 1 rakam ve 1 ozel karakter icerip, 8 karakterden kisa olmamali!",
+	"errorMessageConfirmPassword": "Parolalar eslesmeli!",
+	"errorMessageLoginPassword": "Lutfen parolanizi giriniz!"
 }

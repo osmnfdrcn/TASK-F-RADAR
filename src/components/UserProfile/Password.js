@@ -40,8 +40,8 @@ const Password = () => {
           labelText={t.password}
         />
         {
-          formik.touched.password && formik.touched.password &&
-          <span className="form-error">{formik.errors.password} </span>
+          formik.errors.password && formik.touched.password &&
+          <span className="form-error">{t.errorMessagePassword} </span>
         }
         <FormRow
           type="password"
@@ -52,7 +52,7 @@ const Password = () => {
           labelText={t.password}
         />
         {formik.errors.confirmPassword && formik.touched.confirmPassword &&
-          <span className="form-error">{formik.errors.confirmPassword} </span>
+          <span className="form-error">{t.errorMessageConfirmPassword} </span>
         }
 
         <button className="btn btn-block" type="submit" disabled={!userVerified} >{t.update}</button>

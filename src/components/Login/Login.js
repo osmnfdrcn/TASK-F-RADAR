@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { loginUser, registerUser } from '../../features/user/userSlice';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from "formik";
-import { FcGoogle } from 'react-icons/fc'
+import useTranslations from "../../features/i18n/useTranslation";
+import { loginUser, registerUser } from '../../features/user/userSlice';
 import { FormRow } from "../";
 import Wrapper from "../../assets/wrappera/Login";
 import { SchemaRegister, SchemaLogin } from "../../utils/formSchemas";
-import useTranslations from "../../features/i18n/useTranslation";
 
 
 const Login = () => {
@@ -16,9 +15,6 @@ const Login = () => {
   const { t } = useTranslations();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-
-
 
   const formik = useFormik({
     initialValues: {
@@ -71,7 +67,7 @@ const Login = () => {
               />
 
               {formik.errors.firstName && formik.touched.firstName &&
-                <span className="form-error"> {formik.errors.firstName}</span>
+                <span className="form-error"> {t.errorMessageFirstName}</span>
               }
 
               <FormRow
@@ -83,9 +79,10 @@ const Login = () => {
                 labelText={t.lastName}
               />
               {formik.errors.lastName && formik.touched.lastName &&
-                <span className="form-error">{formik.errors.lastName} </span>
+                <span className="form-error">{t.errorMessageLastName} </span>
               }
-            </>}
+            </>
+          }
 
           <FormRow
             type="email"
@@ -96,7 +93,7 @@ const Login = () => {
             labelText={t.email}
           />
           {formik.errors.email && formik.touched.email &&
-            <span className="form-error">{formik.errors.email} </span>
+            <span className="form-error">{t.errorMessageEmail} </span>
           }
 
           <FormRow
@@ -107,8 +104,8 @@ const Login = () => {
             value={formik.values.password}
             labelText={t.password}
           />
-          {formik.touched.password && formik.touched.password &&
-            <span className="form-error">{formik.errors.password} </span>
+          {formik.errors.password && formik.touched.password &&
+            <span className="form-error">{isMember ? t.errorMessageLoginPassword : t.errorMessagePassword} </span>
           }
 
           {!isMember &&
@@ -123,7 +120,7 @@ const Login = () => {
 
               />
               {formik.errors.confirmPassword && formik.touched.confirmPassword &&
-                <span className="form-error">{formik.errors.confirmPassword} </span>
+                <span className="form-error">{t.errorMessageConfirmPassword} </span>
               }
             </>
           }

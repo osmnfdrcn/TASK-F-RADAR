@@ -1,9 +1,8 @@
-import Wrapper from "../../assets/wrappera/ConfirmModal"
-import { useDispatch, useSelector } from "react-redux";
-import { selectTranslations } from "../../features/i18n/i18nSlice";
-import { showDeleteConfirmModal } from "../../features/customer/CustomerSlice";
-import Button from "../Button/Button";
+import { useDispatch } from "react-redux";
 import useTranslations from "../../features/i18n/useTranslation";
+import { showDeleteConfirmModal } from "../../features/customer/CustomerSlice";
+import { Button } from "../";
+import Wrapper from "../../assets/wrappera/ConfirmModal"
 
 const ConfirmModal = ({ action, question, id, handleAction }) => {
   const dispatch = useDispatch();

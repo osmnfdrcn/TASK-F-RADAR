@@ -30,5 +30,17 @@
 	"save": "节省",
 	"login": "登录",
 	"register": "登记",
-	"passwordRepeat": "重复帕罗拉"
+	"passwordRepeat": "重复帕罗拉",
+	"errorMessageCompanyName": "请输入公司名称！",
+	"errorMessageTaxNumber": "必须正好是 10 个字符！",
+	"errorMessageTaxOffice": "请进税务局！",
+	"errorMessageInvoiceCount": "请输入发票数量！",
+	"errorMessageContactNumber": "请输入联系电话！",
+	"errorMessageProvince": "请输入省份！",
+	"errorMessageFirstName": "请输入您的名字！",
+	"errorMessageLastName": "请输入您的姓氏！",
+	"errorMessageEmail": "请输入邮箱！",
+	"errorMessagePassword": "密码必须包含 1 个大写字母、1 个小写字母、1 个数字和 1 个特殊字符，并且长度至少为 8 位！",
+	"errorMessageConfirmPassword": "密码必须匹配！",
+	"errorMessageLoginPassword": "请输入您的密码！"
 }

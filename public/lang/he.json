@@ -30,5 +30,17 @@
 	"save": "להציל",
 	"login": "התחברות",
 	"register": "הירשם",
-	"passwordRepeat": "חזור על פארולה"
+	"passwordRepeat": "חזור על פארולה",
+	"errorMessageCompanyName": "נא להזין את שם החברה!",
+	"errorMessageTaxNumber": "חייב להיות בדיוק 10 תווים!",
+	"errorMessageTaxOffice": "נא להיכנס למשרד המס!",
+	"errorMessageInvoiceCount": "נא להזין את ספירת החשבוניות!",
+	"errorMessageContactNumber": "נא להזין מספר איש קשר!",
+	"errorMessageProvince": "נא להיכנס למחוז!",
+	"errorMessageFirstName": "אנא הכנס את שמך הפרטי!",
+	"errorMessageLastName": "אנא הכנס את שם המשפחה שלך!",
+	"errorMessageEmail": "נא להזין מייל!",
+	"errorMessagePassword": "הסיסמה חייבת להכיל אות אחת גדולה, 1 אותיות קטנות, מספר 1 ו-1 תו מיוחד ולהיות באורך 8 ספרות לפחות!",
+	"errorMessageConfirmPassword": "ססמאות חייבות להתאים!",
+	"errorMessageLoginPassword": "הזן את סיסמתך בבקשה!"
 }

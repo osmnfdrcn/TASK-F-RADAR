@@ -46,6 +46,7 @@ const AppRoutes = () => {
         <Route path='login' element={<LoginPage />} />
         <Route path='*' element={<ErrorPage />} />
       </Routes>
+
       {
         user && !userVerified && <Warning text={"Hesabinizi aktif hale getirmek icin lutfen email adresinizi onaylayiniz!"} />
       }

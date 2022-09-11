@@ -47,7 +47,7 @@ const UserInfo = () => {
           labelText={t.name}
         />
         {formik.errors.firstName && formik.touched.firstName &&
-          <span className="form-error"> {formik.errors.firstName}</span>
+          <span className="form-error"> {t.errorMessageFirstName}</span>
         }
         <FormRow
           type="text"
@@ -58,7 +58,7 @@ const UserInfo = () => {
           labelText={t.lastname}
         />
         {formik.errors.lastName && formik.touched.lastName &&
-          <span className="form-error">{formik.errors.lastName} </span>
+          <span className="form-error">{t.errorMessageLastName} </span>
         }
         <FormRow
           type="email"
@@ -70,7 +70,7 @@ const UserInfo = () => {
 
         />
         {formik.errors.email && formik.touched.email &&
-          <span className="form-error">{formik.errors.email} </span>
+          <span className="form-error">{t.errorMessageEmail} </span>
         }
         <FormRow
           type="text"

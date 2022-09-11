@@ -4,8 +4,8 @@ import { setShowMainSubMenu } from '../../features/app/appSlice'
 import Wrapper from '../../assets/wrappera/Navbar';
 import { AiOutlineUser } from 'react-icons/ai'
 import { LangSwitcher } from "../../components";
-
 import { MainHeaderItem, Logo, SubMenu } from '../../components';
+
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -15,12 +15,11 @@ const Navbar = () => {
   return (
     <Wrapper>
 
-      <Link to='/' >
-        <Logo />
-      </Link>
+      <Link to='/'> <Logo /> </Link>
 
       {user
         ? <div className='header-items'>
+          <LangSwitcher />
           <MainHeaderItem
             reactIcon={<AiOutlineUser />}
             text={user.firstName}
@@ -31,16 +30,14 @@ const Navbar = () => {
           />
         </div>
         : (<div className='header-items'>
+          <LangSwitcher />
           <Link to='/login' className='user-item'>
             <MainHeaderItem text={"Login"} classname={"user-item"} />
           </Link>
         </div>)
+      }
 
-      }
-      <LangSwitcher />
-      {
-        user && showMainSubMenu && <SubMenu />
-      }
+      {user && showMainSubMenu && <SubMenu />}
 
     </Wrapper>
   )

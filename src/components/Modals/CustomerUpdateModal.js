@@ -1,38 +1,33 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { createCustomer, showCreateCustomerModal } from '../../features/customer/CustomerSlice';
+import { updateCustomer, showUpdateCustomerModal } from '../../features/customer/CustomerSlice';
 import SchemaCustomer from '../../utils/formSchemas/SchemaCustomer'
 import { useFormik } from "formik";
-import { FormRow, Title, Spinner, Button } from '..'
+import { FormRow, Title, Spinner, Button } from '../../components'
 import Wrapper from '../../assets/wrappera/CustomerActionModal';
 import { AiOutlineCloseCircle } from 'react-icons/ai'
-import { selectTranslations } from "../../features/i18n/i18nSlice";
 import useTranslations from '../../features/i18n/useTranslation';
 
-
-const CustomerCreateModal = () => {
+const CustomerUpdateModal = () => {
   const dispatch = useDispatch();
-  const { isLoading } = useSelector((store) => store.customer);
   const { t } = useTranslations();
-  const { user } = useSelector((store) => store.user);
-  const userVerified = user?.status === "Active";
+
+  const { customer, isLoading } = useSelector((store) => store.customer);
 
   const formik = useFormik({
     initialValues: {
-      companyName: "",
-      taxNumber: "",
-      taxOffice: "",
-      invoiceCount: "",
-      contactNumber: "",
-      province: "",
+      id: customer.id,
+      companyName: customer.companyName,
+      taxNumber: customer.taxNumber,
+      taxOffice: customer.taxOffice,
+      invoiceCount: customer.invoiceCount,
+      contactNumber: customer.contactNumber,
+      province: customer.province,
 
     },
 
     validationSchema: SchemaCustomer,
     onSubmit: () => {
-      const { companyName, taxNumber, taxOffice, invoiceCount, contactNumber } = formik.values;
-
-      dispatch(createCustomer(formik.values));
-
+      dispatch(updateCustomer(formik.values));
     }
   })
 
@@ -42,8 +37,8 @@ const CustomerCreateModal = () => {
 
   return (
     <Wrapper>
-      <Title title={t.createNewCustomer} />
-      <AiOutlineCloseCircle onClick={() => dispatch(showCreateCustomerModal(false))} />
+      <Title title={t.update} />
+      <AiOutlineCloseCircle onClick={() => dispatch(showUpdateCustomerModal(false))} />
       <form className="form" onSubmit={formik.handleSubmit}>
         <div>
           <FormRow
@@ -55,7 +50,7 @@ const CustomerCreateModal = () => {
             labelText={t.companyName}
           />
           {formik.errors.companyName && formik.touched.companyName && (
-            <span className="form-error"> {formik.errors.companyName}</span>
+            <span className="form-error"> {t.errorMessageCompanyName}</span>
           )}
         </div>
         <div>
@@ -68,7 +63,7 @@ const CustomerCreateModal = () => {
             labelText={t.taxNumber}
           />
           {formik.errors.taxNumber && formik.touched.taxNumber && (
-            <span className="form-error">{formik.errors.taxNumber} </span>
+            <span className="form-error">{t.errorMessageTaxNumber} </span>
           )}
         </div>
 
@@ -82,7 +77,7 @@ const CustomerCreateModal = () => {
             labelText={t.taxOffice}
           />
           {formik.errors.taxOffice && formik.touched.taxOffice && (
-            <span className="form-error">{formik.errors.taxOffice} </span>
+            <span className="form-error">{t.errorMessageTaxOffice} </span>
           )}
         </div>
         <div>
@@ -95,7 +90,7 @@ const CustomerCreateModal = () => {
             labelText={t.invoiceCount}
           />
           {formik.errors.invoiceCount && formik.touched.invoiceCount && (
-            <span className="form-error">{formik.errors.invoiceCount} </span>
+            <span className="form-error">{t.errorMessageInvoiceCount} </span>
           )}
         </div>
 
@@ -107,10 +102,9 @@ const CustomerCreateModal = () => {
             onBlur={formik.handleBlur}
             value={formik.values?.contactNumber}
             labelText={t.contactNumber}
-            placeholder={t.forInstance}
-          />
+            placeholder={t.forInstance} />
           {formik.errors.contactNumber && formik.touched.contactNumber && (
-            <span className="form-error">{formik.errors.contactNumber} </span>
+            <span className="form-error">{t.errorMessageContactNumber} </span>
           )}
         </div>
         <div>
@@ -123,16 +117,16 @@ const CustomerCreateModal = () => {
             labelText={t.province}
           />
           {formik.errors.province && formik.touched.province && (
-            <span className="form-error">{formik.errors.province} </span>
+            <span className="form-error">{t.errorMessageProvince} </span>
           )}
         </div>
 
         <div className="buttons">
-          <Button className="btn btn-block" type="submit" text={t.create} disabled={!userVerified || isLoading || !(formik.isValid && formik.dirty)} />
+          <Button className="btn btn-block" type="submit" text={t.update} disabled={isLoading || !(formik.isValid && formik.dirty)} />
         </div>
       </form>
     </Wrapper>
   );
 }
 
-export default CustomerCreateModal
+export default CustomerUpdateModal

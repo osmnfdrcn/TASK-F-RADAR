@@ -10,6 +10,7 @@ const TableBody = () => {
 
   useEffect(() => {
     dispatch(getCustomers());
+    // eslint-disable-next-line 
   }, []);
 
   if (isLoading) { return <Spinner /> }

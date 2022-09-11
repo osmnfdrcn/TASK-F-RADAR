@@ -1,7 +1,6 @@
 import useTranslations from "../../features/i18n/useTranslation"
 
-const FormRow = ({ type, name, value, onChange, onBlur, labelText, placeholder, className, readOnly }) => {
-    const isEditing = true
+const FormRow = ({ type, name, value, onChange, onBlur, labelText, placeholder, className }) => {
     const { lang } = useTranslations()
     const alignRight = lang === "he" && "alignRight"
 
