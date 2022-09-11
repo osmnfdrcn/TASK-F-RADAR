@@ -6,10 +6,14 @@ import { FormRow, Title, Spinner, Button } from '../../components'
 import Wrapper from '../../assets/wrappera/CustomerActionModal';
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom';
+import { selectTranslations } from "../../features/i18n/i18nSlice";
+import useTranslations from '../../features/i18n/useTranslation';
 
 const CustomerUpdateModal = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
+  const { t } = useTranslations();
+
   const { customer, isLoading } = useSelector((store) => store.customer);
 
   const formik = useFormik({
@@ -36,7 +40,7 @@ const CustomerUpdateModal = () => {
 
   return (
     <Wrapper>
-      <Title title="Update Customer" />
+      <Title title={t.update} />
       <AiOutlineCloseCircle onClick={() => dispatch(showUpdateCustomerModal(false))} />
       <form className="form" onSubmit={formik.handleSubmit}>
         <div>
@@ -46,7 +50,7 @@ const CustomerUpdateModal = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.companyName}
-            labelText="Company Name"
+            labelText={t.companyName}
           />
           {formik.errors.companyName && formik.touched.companyName && (
             <span className="form-error"> {formik.errors.companyName}</span>
@@ -59,7 +63,7 @@ const CustomerUpdateModal = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.taxNumber}
-            labelText="Tax Number"
+            labelText={t.taxNumber}
           />
           {formik.errors.taxNumber && formik.touched.taxNumber && (
             <span className="form-error">{formik.errors.taxNumber} </span>
@@ -73,7 +77,7 @@ const CustomerUpdateModal = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values?.taxOffice}
-            labelText="Tax Office"
+            labelText={t.taxOffice}
           />
           {formik.errors.taxOffice && formik.touched.taxOffice && (
             <span className="form-error">{formik.errors.taxOffice} </span>
@@ -86,7 +90,7 @@ const CustomerUpdateModal = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values?.invoiceCount}
-            labelText="Invoice Count"
+            labelText={t.invoiceCount}
           />
           {formik.errors.invoiceCount && formik.touched.invoiceCount && (
             <span className="form-error">{formik.errors.invoiceCount} </span>
@@ -100,9 +104,8 @@ const CustomerUpdateModal = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values?.contactNumber}
-            labelText="Contact Number"
-            placeholder="e.g : 212 212 12 12 or 534 2346576 or 5326784523"
-          />
+            labelText={t.contactNumber}
+            placeholder={t.forInstance} />
           {formik.errors.contactNumber && formik.touched.contactNumber && (
             <span className="form-error">{formik.errors.contactNumber} </span>
           )}
@@ -114,7 +117,7 @@ const CustomerUpdateModal = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values?.province}
-            labelText="Province"
+            labelText={t.province}
           />
           {formik.errors.province && formik.touched.province && (
             <span className="form-error">{formik.errors.province} </span>
@@ -122,7 +125,7 @@ const CustomerUpdateModal = () => {
         </div>
 
         <div className="buttons">
-          <Button className="btn btn-block" type="submit" text="UPDATE" disabled={isLoading || !(formik.isValid && formik.dirty)} />
+          <Button className="btn btn-block" type="submit" text={t.update} disabled={isLoading || !(formik.isValid && formik.dirty)} />
         </div>
       </form>
     </Wrapper>

@@ -7,6 +7,7 @@ import { getCustomers } from "../../features/customer/CustomerSlice";
 const TableBody = () => {
   const dispatch = useDispatch();
   const { searchResults, isLoading } = useSelector((store) => store.customer);
+
   useEffect(() => {
     dispatch(getCustomers());
   }, []);

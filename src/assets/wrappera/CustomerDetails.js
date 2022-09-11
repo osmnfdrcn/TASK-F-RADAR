@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 const Wrapper = styled.div`
+
     margin: 0 auto;
     width: auto;
     display: flex;
@@ -11,7 +12,7 @@ const Wrapper = styled.div`
     display: flex;
     height: auto;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     gap: 20px;
     padding: 40px;
@@ -23,9 +24,16 @@ const Wrapper = styled.div`
      align-items: center;
   }
   .item span:nth-child(1){
-      width: 50% ;
+    display: inline-block;
+    min-width: 200px ;
+  }
+  .item span:nth-child(2){
+    display: inline-block;
+    min-width: 200px ;
+    text-align: right;
+  }
 
-    }
+    
 
   .buttons{
     width: 100%;
@@ -35,6 +43,10 @@ const Wrapper = styled.div`
     button{
       width: 100px;
     }
+  }
+
+  .align-right{
+    justify-content: flex-end;
   }
   @media (min-width: 767px) {
     .item span:nth-child(1){

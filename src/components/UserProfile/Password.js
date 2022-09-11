@@ -5,11 +5,12 @@ import { updateUser } from '../../features/user/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import { SchemaPasswordChange } from "../../utils/formSchemas";
-
+import useTranslations from "../../features/i18n/useTranslation";
 
 const Password = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslations();
   const { user, isLoading } = useSelector((store) => store.user);
   const userVerified = user.status === 'Active'
 
@@ -36,7 +37,7 @@ const Password = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
-          labelText="Parola"
+          labelText={t.password}
         />
         {
           formik.touched.password && formik.touched.password &&
@@ -48,13 +49,13 @@ const Password = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.confirmPassword}
-          labelText="Parola tekrar"
+          labelText={t.password}
         />
         {formik.errors.confirmPassword && formik.touched.confirmPassword &&
           <span className="form-error">{formik.errors.confirmPassword} </span>
         }
 
-        <button className="btn btn-block" type="submit" disabled={!userVerified} >GUNCELLE</button>
+        <button className="btn btn-block" type="submit" disabled={!userVerified} >{t.update}</button>
 
 
       </form>

@@ -16,6 +16,8 @@ import Warning from "./Warning/Warning";
 import Logo from './Logo/Logo'
 import MainHeaderItem from "./MainHeaderItem/MainHeaderItem";
 import SubMenu from './SubMenu/SubMenu'
+import LangSwitcher from "./LangSwitcher/LangSwitcher";
+import TableCell from "./TableCell/TableCell";
 
 export {
   Customer,
@@ -36,4 +38,6 @@ export {
   MainHeaderItem,
   Logo,
   SubMenu,
+  LangSwitcher,
+  TableCell
 }

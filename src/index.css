@@ -247,6 +247,13 @@ ul {
   margin-bottom: 0.1rem;
   text-transform: capitalize;
   letter-spacing: var(--letterSpacing);
+  
+}
+.alignRight{
+  text-align: right;
+}
+.alignLeft{
+  text-align: left;
 }
 
 .form-input,
@@ -327,8 +334,12 @@ ul {
   .dashboard-section{
     align-items: flex-start;
   }
+  .align-right{
+    align-items: flex-end;
+  }
   .dashboard-container{
-    margin-left: 15vw;
+    margin: 0 10vw;
+    
   }
 }
 

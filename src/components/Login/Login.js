@@ -7,10 +7,13 @@ import { FcGoogle } from 'react-icons/fc'
 import { FormRow } from "../";
 import Wrapper from "../../assets/wrappera/Login";
 import { SchemaRegister, SchemaLogin } from "../../utils/formSchemas";
+import useTranslations from "../../features/i18n/useTranslation";
+
 
 const Login = () => {
   const [isMember, setIsMember] = useState(true)
   const { user, isLoading } = useSelector((store) => store.user);
+  const { t } = useTranslations();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -53,7 +56,7 @@ const Login = () => {
       <div className="register-container">
         <form onSubmit={formik.handleSubmit}>
           <span className="title">
-            {isMember ? "GIRIS" : "KAYIT"}
+            {isMember ? t.login : t.register}
           </span>
 
           {!isMember &&
@@ -64,7 +67,7 @@ const Login = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.firstName}
-                labelText="Isim"
+                labelText={t.name}
               />
 
               {formik.errors.firstName && formik.touched.firstName &&
@@ -77,7 +80,7 @@ const Login = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.lastName}
-                labelText="Soyisim"
+                labelText={t.lastName}
               />
               {formik.errors.lastName && formik.touched.lastName &&
                 <span className="form-error">{formik.errors.lastName} </span>
@@ -90,7 +93,7 @@ const Login = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.email}
-            labelText="Email"
+            labelText={t.email}
           />
           {formik.errors.email && formik.touched.email &&
             <span className="form-error">{formik.errors.email} </span>
@@ -102,7 +105,7 @@ const Login = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.password}
-            labelText="Parola"
+            labelText={t.password}
           />
           {formik.touched.password && formik.touched.password &&
             <span className="form-error">{formik.errors.password} </span>
@@ -113,7 +116,7 @@ const Login = () => {
               <FormRow
                 type="password"
                 name="confirmPassword"
-                labelText="Parolanizi Tekrar Giriniz"
+                labelText={t.passwordRepeat}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.confirmPassword}
@@ -125,7 +128,7 @@ const Login = () => {
             </>
           }
 
-          <button className="btn btn-block" type="submit" disabled={isLoading}>{isMember ? "GIRIS YAP" : "KAYIT OL"}</button>
+          <button className="btn btn-block" type="submit" disabled={isLoading}>{isMember ? t.login : t.register}</button>
 
           <div className="toggle-button">
             <input type="checkbox" id="toggle" className="toggleCheckbox" />
@@ -135,7 +138,7 @@ const Login = () => {
                   formik.resetForm()
                   setIsMember(!isMember)
                 }}>
-                GIRIS
+                {t.login}
               </div>
 
               <div
@@ -143,7 +146,7 @@ const Login = () => {
                   formik.resetForm()
                   setIsMember(!isMember)
                 }}>
-                KAYIT
+                {t.register}
               </div>
             </label>
           </div>

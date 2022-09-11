@@ -1,8 +1,13 @@
+import useTranslations from "../../features/i18n/useTranslation"
+
 const FormRow = ({ type, name, value, onChange, onBlur, labelText, placeholder, className, readOnly }) => {
     const isEditing = true
+    const { lang } = useTranslations()
+    const alignRight = lang === "he" && "alignRight"
+
     return (
-        <div className={`form-row ${className}`}>
-            <label htmlFor={name} className='form-label'>
+        <div className={`form-row ${className} `}>
+            <label htmlFor={name} className={`form-label ${alignRight}`}>
                 {labelText || name}
             </label>
             <input
@@ -11,9 +16,8 @@ const FormRow = ({ type, name, value, onChange, onBlur, labelText, placeholder, 
                 name={name}
                 onChange={onChange}
                 onBlur={onBlur}
-                className='form-input '
+                className={`form-input ${alignRight} `}
                 placeholder={placeholder}
-            // readOnly={true}
             />
         </div>
     )

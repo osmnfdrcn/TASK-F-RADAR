@@ -5,10 +5,14 @@ import { useFormik } from "formik";
 import { FormRow, Title, Spinner, Button } from '..'
 import Wrapper from '../../assets/wrappera/CustomerActionModal';
 import { AiOutlineCloseCircle } from 'react-icons/ai'
+import { selectTranslations } from "../../features/i18n/i18nSlice";
+import useTranslations from '../../features/i18n/useTranslation';
+
 
 const CustomerCreateModal = () => {
   const dispatch = useDispatch();
   const { isLoading } = useSelector((store) => store.customer);
+  const { t } = useTranslations();
   const { user } = useSelector((store) => store.user);
   const userVerified = user?.status === "Active";
 
@@ -38,7 +42,7 @@ const CustomerCreateModal = () => {
 
   return (
     <Wrapper>
-      <Title title="Create New Customer" />
+      <Title title={t.createNewCustomer} />
       <AiOutlineCloseCircle onClick={() => dispatch(showCreateCustomerModal(false))} />
       <form className="form" onSubmit={formik.handleSubmit}>
         <div>
@@ -48,7 +52,7 @@ const CustomerCreateModal = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.companyName}
-            labelText="Company Name"
+            labelText={t.companyName}
           />
           {formik.errors.companyName && formik.touched.companyName && (
             <span className="form-error"> {formik.errors.companyName}</span>
@@ -61,7 +65,7 @@ const CustomerCreateModal = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.taxNumber}
-            labelText="Tax Number"
+            labelText={t.taxNumber}
           />
           {formik.errors.taxNumber && formik.touched.taxNumber && (
             <span className="form-error">{formik.errors.taxNumber} </span>
@@ -75,7 +79,7 @@ const CustomerCreateModal = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values?.taxOffice}
-            labelText="Tax Office"
+            labelText={t.taxOffice}
           />
           {formik.errors.taxOffice && formik.touched.taxOffice && (
             <span className="form-error">{formik.errors.taxOffice} </span>
@@ -88,7 +92,7 @@ const CustomerCreateModal = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values?.invoiceCount}
-            labelText="Invoice Count"
+            labelText={t.invoiceCount}
           />
           {formik.errors.invoiceCount && formik.touched.invoiceCount && (
             <span className="form-error">{formik.errors.invoiceCount} </span>
@@ -102,8 +106,8 @@ const CustomerCreateModal = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values?.contactNumber}
-            labelText="Contact Number"
-            placeholder="e.g : 212 212 12 12 or 534 2346576 or 5326784523"
+            labelText={t.contactNumber}
+            placeholder={t.forInstance}
           />
           {formik.errors.contactNumber && formik.touched.contactNumber && (
             <span className="form-error">{formik.errors.contactNumber} </span>
@@ -116,7 +120,7 @@ const CustomerCreateModal = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values?.province}
-            labelText="Province"
+            labelText={t.province}
           />
           {formik.errors.province && formik.touched.province && (
             <span className="form-error">{formik.errors.province} </span>
@@ -124,7 +128,7 @@ const CustomerCreateModal = () => {
         </div>
 
         <div className="buttons">
-          <Button className="btn btn-block" type="submit" text="CREATE" disabled={!userVerified || isLoading || !(formik.isValid && formik.dirty)} />
+          <Button className="btn btn-block" type="submit" text={t.create} disabled={!userVerified || isLoading || !(formik.isValid && formik.dirty)} />
         </div>
       </form>
     </Wrapper>

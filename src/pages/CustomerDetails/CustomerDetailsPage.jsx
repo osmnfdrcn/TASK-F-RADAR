@@ -1,6 +1,9 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { selectTranslations } from "../../features/i18n/i18nSlice";
+import useTranslations from "../../features/i18n/useTranslation";
+
 import { v4 as uuidv4 } from "uuid";
 import {
 	getSingleCustomer,
@@ -22,8 +25,10 @@ const CustomerDetailsPage = () => {
 	const { id } = useParams();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const { t, lang } = useTranslations();
 	const { user } = useSelector((store) => store.user);
 	const userVerified = user?.status === "Active";
+	const he = lang === "he";
 
 	const {
 		customer,
@@ -50,57 +55,62 @@ const CustomerDetailsPage = () => {
 		<Wrapper>
 			{displayDeleteConfirmModal && (
 				<ConfirmModal
-					action="You are about to delete a record!"
-					question="Are you sure?"
+					action={t.youAreAboutToDeleteARecord}
+					question={t.areYouSure}
 					handleAction={handleDelete}
 					id={customer.id}
 				/>
 			)}
 
 			{displayUpdateCustomerModal && <CustomerUpdateModal />}
-			<Title title="Customer Details" />
+			<Title title={t.customerDetails} />
 
 			{/* burasi component haline getirilecek */}
 			<div className="customer-details">
-				<div className="item">
+				<div className={he ? "item align-right" : "item"}>
 					{" "}
-					<span>Company Name </span>
-					<span>{customer.companyName}</span>
+					<span>{he ? customer.companyName : t.companyName} </span>
+					<span>{he ? t.companyName : customer.companyName}</span>
 				</div>
-				<div className="item">
+				<div className={he ? "item align-right" : "item"}>
 					{" "}
-					<span>Tax Number </span>
-					<span>{customer.taxNumber}</span>
+					<span>{he ? customer.taxOffice : t.taxOffice} </span>
+					<span>{he ? t.taxOffice : customer.taxOffice}</span>
 				</div>
-				<div className="item">
+				<div className={he ? "item align-right" : "item"}>
 					{" "}
-					<span>Invoice Count</span>
-					<span>{customer.invoiceCount}</span>
+					<span>{he ? customer.taxNumber : t.taxNumber} </span>
+					<span>{he ? t.taxNumber : customer.taxNumber}</span>
 				</div>
-				<div className="item">
+				<div className={he ? "item align-right" : "item"}>
 					{" "}
-					<span>Contact Number</span>
-					<span>{customer.contactNumber}</span>
+					<span>{he ? customer.invoiceCount : t.invoiceCount} </span>
+					<span>{he ? t.invoiceCount : customer.invoiceCount}</span>
 				</div>
-				<div className="item">
+				<div className={he ? "item align-right" : "item"}>
 					{" "}
-					<span>Province</span>
-					<span>{customer.province}</span>
+					<span>{he ? customer.contactNumber : t.contactNumber} </span>
+					<span>{he ? t.contactNumber : customer.contactNumber}</span>
+				</div>
+				<div className={he ? "item align-right" : "item"}>
+					{" "}
+					<span>{he ? customer.province : t.province} </span>
+					<span>{he ? t.province : customer.province}</span>
 				</div>
 
-				<div className="buttons">
+				<div className={he ? "buttons align-right" : "buttons"}>
 					<Button
 						className="btn btn-block"
 						type="submit"
 						onClick={() => dispatch(showUpdateCustomerModal(true))}
-						text="EDIT"
+						text={t.edit}
 						disabled={!userVerified}
 					/>
 					<Button
 						className="btn btn-block"
 						type="submit"
 						onClick={() => dispatch(showDeleteConfirmModal(true))}
-						text="DELETE"
+						text={t.delete}
 						disabled={!userVerified}
 					/>
 				</div>

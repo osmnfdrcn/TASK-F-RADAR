@@ -4,7 +4,7 @@ import logo from '../../assets/svg/logo.svg';
 const Logo = () => {
   return (
     <Wrapper>
-      <img className='logo' src={logo} />
+      <img className='logo' src={logo} alt="fon radar logo" />
     </Wrapper>
   )
 }

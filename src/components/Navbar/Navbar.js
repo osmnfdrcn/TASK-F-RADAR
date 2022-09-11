@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setShowMainSubMenu } from '../../features/app/appSlice'
 import Wrapper from '../../assets/wrappera/Navbar';
 import { AiOutlineUser } from 'react-icons/ai'
+import { LangSwitcher } from "../../components";
 
 import { MainHeaderItem, Logo, SubMenu } from '../../components';
 
@@ -36,6 +37,7 @@ const Navbar = () => {
         </div>)
 
       }
+      <LangSwitcher />
       {
         user && showMainSubMenu && <SubMenu />
       }

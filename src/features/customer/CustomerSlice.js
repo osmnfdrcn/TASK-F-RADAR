@@ -189,7 +189,7 @@ const customerSlice = createSlice({
     },
     [createCustomer.fulfilled]: (state, { payload }) => {
       state.customers = [...state.customers, payload]
-      state.searchResults = [...state.customers, payload]
+      state.searchResults = state.customers
       state.isLoading = false
       state.error = false
       state.displaySuccessAlert = true
